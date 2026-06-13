@@ -11,51 +11,63 @@
         color: white;
         font-family: "Times New Roman", Times, serif;
         text-transform: lowercase;
+
+        /* small subtle grid */
+        background-image:
+            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 25px 25px;
     }
 
     .header {
         text-align: center;
         padding: 40px 20px 10px 20px;
         font-size: 40px;
-        font-weight: normal;
     }
 
     .line {
         width: 60%;
         margin: 0 auto 40px auto;
         border-bottom: 1px solid white;
+        opacity: 0.6;
     }
 
     .container {
         display: flex;
         justify-content: center;
         gap: 40px;
-        margin-top: 40px;
+        margin-top: 60px;
         flex-wrap: wrap;
     }
 
+    /* main cards stay old-school white */
     .card {
-        width: 200px;
-        height: 120px;
+        width: 220px;
+        height: 130px;
         border: 2px solid white;
-        border-radius: 15px;
+        border-radius: 16px;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+
+        font-size: 26px;
         cursor: pointer;
-        transition: 0.2s;
+
+        background-color: black;
+        transition: 0.2s ease;
+        color: white;
     }
 
     .card:hover {
         background-color: white;
         color: black;
-        transform: scale(1.05);
+        transform: scale(1.06);
     }
 
     .menu {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 50px;
         display: none;
     }
 
@@ -71,29 +83,52 @@
         gap: 15px;
     }
 
+    /* difficulty buttons: white text only */
     .diff {
-        padding: 10px 20px;
-        border-radius: 10px;
+        width: 140px;
+        padding: 12px 0;
+        border-radius: 12px;
+
         cursor: pointer;
-        transition: 0.2s;
-        border: 1px solid rgba(255,255,255,0.4);
-        color: black;
-        font-weight: bold;
+        transition: 0.25s ease;
+
+        border: 2px solid white;
+        color: white;
+        font-weight: normal;
+        text-align: center;
+        background: black;
     }
 
-    /* difficulty colors */
-    .baby { background: #7fd3ff; }
-    .easy { background: #5cff7a; }
-    .medium { background: #ffe45c; }
-    .hard { background: #ff5c5c; }
-    .evil { background: #b15cff; }
+    /* glow-only hover (no background fill) */
+    .baby:hover {
+        box-shadow: 0 0 15px #7fd3ff;
+        border-color: #7fd3ff;
+        transform: scale(1.06);
+    }
 
-    /* hover keeps contrast (slightly darker but still readable) */
-    .baby:hover { background: #5bbbe6; }
-    .easy:hover { background: #3fd65c; }
-    .medium:hover { background: #e6c94a; }
-    .hard:hover { background: #e64a4a; }
-    .evil:hover { background: #8e3fe6; }
+    .easy:hover {
+        box-shadow: 0 0 15px #5cff7a;
+        border-color: #5cff7a;
+        transform: scale(1.06);
+    }
+
+    .medium:hover {
+        box-shadow: 0 0 15px #ffe45c;
+        border-color: #ffe45c;
+        transform: scale(1.06);
+    }
+
+    .hard:hover {
+        box-shadow: 0 0 15px #ff5c5c;
+        border-color: #ff5c5c;
+        transform: scale(1.06);
+    }
+
+    .evil:hover {
+        box-shadow: 0 0 15px #b15cff;
+        border-color: #b15cff;
+        transform: scale(1.06);
+    }
 
 </style>
 </head>
@@ -104,8 +139,13 @@
 <div class="line"></div>
 
 <div class="container">
-    <div class="card" onclick="openMenu('integrals')">integrals</div>
-    <div class="card" onclick="openMenu('derivatives')">derivatives</div>
+    <div class="card" onclick="openMenu('integrals')">
+        integrals
+    </div>
+
+    <div class="card" onclick="openMenu('derivatives')">
+        derivatives
+    </div>
 </div>
 
 <div class="menu" id="menu">
