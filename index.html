@@ -10,6 +10,7 @@
         background-color: black;
         color: white;
         font-family: "Times New Roman", Times, serif;
+        text-transform: lowercase;
     }
 
     .header {
@@ -71,17 +72,29 @@
     }
 
     .diff {
-        border: 1px solid white;
         padding: 10px 20px;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.2s;
+        border: 1px solid rgba(255,255,255,0.4);
+        color: black;
+        font-weight: bold;
     }
 
-    .diff:hover {
-        background-color: white;
-        color: black;
-    }
+    /* difficulty colors */
+    .baby { background: #7fd3ff; }
+    .easy { background: #5cff7a; }
+    .medium { background: #ffe45c; }
+    .hard { background: #ff5c5c; }
+    .evil { background: #b15cff; }
+
+    /* hover keeps contrast (slightly darker but still readable) */
+    .baby:hover { background: #5bbbe6; }
+    .easy:hover { background: #3fd65c; }
+    .medium:hover { background: #e6c94a; }
+    .hard:hover { background: #e64a4a; }
+    .evil:hover { background: #8e3fe6; }
+
 </style>
 </head>
 
@@ -91,18 +104,19 @@
 <div class="line"></div>
 
 <div class="container">
-    <div class="card" onclick="openMenu('Integrals')">Integrals</div>
-    <div class="card" onclick="openMenu('Derivatives')">Derivatives</div>
+    <div class="card" onclick="openMenu('integrals')">integrals</div>
+    <div class="card" onclick="openMenu('derivatives')">derivatives</div>
 </div>
 
 <div class="menu" id="menu">
     <h2 id="menuTitle"></h2>
+
     <div class="difficulty">
-        <div class="diff">baby</div>
-        <div class="diff">easy</div>
-        <div class="diff">medium</div>
-        <div class="diff">hard</div>
-        <div class="diff">evil</div>
+        <div class="diff baby">baby</div>
+        <div class="diff easy">easy</div>
+        <div class="diff medium">medium</div>
+        <div class="diff hard">hard</div>
+        <div class="diff evil">evil</div>
     </div>
 </div>
 
