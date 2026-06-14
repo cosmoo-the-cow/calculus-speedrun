@@ -130,6 +130,16 @@
         transform: scale(1.06);
     }
 
+.version {
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    font-family: monospace;
+    pointer-events: none;
+}
+
 </style>
 </head>
 
@@ -166,6 +176,8 @@ function openMenu(type) {
     document.getElementById("menuTitle").innerText = type + " - select difficulty";
 }
 </script>
+
+<div class="version">version-beta-1.0</div>
 
 </body>
 </html>
