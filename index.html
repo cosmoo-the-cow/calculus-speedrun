@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,141 +6,162 @@
 <title>calculus speedrun</title>
 
 <style>
-    body {
-        margin: 0;
-        background-color: black;
-        color: white;
-        font-family: "Times New Roman", Times, serif;
-        text-transform: lowercase;
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: "times new roman", serif;
+    text-transform: lowercase;
 
-        /* small subtle grid */
-        background-image:
-            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-        background-size: 25px 25px;
-    }
+    background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 25px 25px;
+}
 
-    .header {
-        text-align: center;
-        padding: 40px 20px 10px 20px;
-        font-size: 40px;
-    }
+.header {
+    text-align: center;
+    padding: 40px 20px 10px;
+    font-size: 40px;
+}
 
-    .line {
-        width: 60%;
-        margin: 0 auto 40px auto;
-        border-bottom: 1px solid white;
-        opacity: 0.6;
-    }
+.line {
+    width: 60%;
+    margin: 0 auto 40px;
+    border-bottom: 1px solid white;
+    opacity: 0.6;
+}
 
-    .container {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 60px;
-        flex-wrap: wrap;
-    }
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
 
-    /* main cards stay old-school white */
-    .card {
-        width: 220px;
-        height: 130px;
-        border: 2px solid white;
-        border-radius: 16px;
+.card {
+    width: 220px;
+    height: 110px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    border: 2px solid white;
+    border-radius: 16px;
 
-        font-size: 26px;
-        cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        background-color: black;
-        transition: 0.2s ease;
-        color: white;
-    }
+    font-size: 26px;
+    cursor: pointer;
 
-    .card:hover {
-        background-color: white;
-        color: black;
-        transform: scale(1.06);
-    }
+    background: black;
+    color: white;
 
-    .menu {
-        text-align: center;
-        margin-top: 50px;
-        display: none;
-    }
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
 
-    .menu h2 {
-        font-weight: normal;
-        margin-bottom: 20px;
-    }
+.card:hover {
+    background: white;
+    color: black;
+    transform: scale(1.06);
+}
 
-    .difficulty {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+.card:active {
+    transform: scale(0.98);
+}
 
-    /* difficulty buttons: white text only */
-    .diff {
-        width: 140px;
-        padding: 12px 0;
-        border-radius: 12px;
+.card.active {
+    background: white;
+    color: black;
+}
 
-        cursor: pointer;
-        transition: 0.25s ease;
+.menu {
+    text-align: center;
+    margin-top: 50px;
 
-        border: 2px solid white;
-        color: white;
-        font-weight: normal;
-        text-align: center;
-        background: black;
-    }
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
 
-    /* glow-only hover (no background fill) */
-    .baby:hover {
-        box-shadow: 0 0 10px #7fd3ff;
-        border-color: #7fd3ff;
-        transform: scale(1.06);
-    }
+.menu.visible {
+    opacity: 1;
+    visibility: visible;
+}
 
-    .easy:hover {
-        box-shadow: 0 0 10px #5cff7a;
-        border-color: #5cff7a;
-        transform: scale(1.06);
-    }
+.menu h2 {
+    font-weight: normal;
+    margin-bottom: 20px;
+}
 
-    .medium:hover {
-        box-shadow: 0 0 10px #ffe45c;
-        border-color: #ffe45c;
-        transform: scale(1.06);
-    }
+.difficulty {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-    .hard:hover {
-        box-shadow: 0 0 10px #ff5c5c;
-        border-color: #ff5c5c;
-        transform: scale(1.06);
-    }
+.diff {
+    width: 140px;
+    padding: 12px 0;
 
-    .evil:hover {
-        box-shadow: 0 0 10px #b15cff;
-        border-color: #b15cff;
-        transform: scale(1.06);
-    }
+    border: 2px solid white;
+    border-radius: 12px;
+
+    background: black;
+    color: white;
+
+    cursor: pointer;
+    text-align: center;
+
+    transition: 0.25s ease;
+}
+
+.baby:hover {
+    box-shadow: 0 0 10px #7fd3ff;
+    border-color: #7fd3ff;
+    transform: scale(1.06);
+}
+
+.easy:hover {
+    box-shadow: 0 0 10px #5cff7a;
+    border-color: #5cff7a;
+    transform: scale(1.06);
+}
+
+.medium:hover {
+    box-shadow: 0 0 10px #ffe45c;
+    border-color: #ffe45c;
+    transform: scale(1.06);
+}
+
+.hard:hover {
+    box-shadow: 0 0 10px #ff5c5c;
+    border-color: #ff5c5c;
+    transform: scale(1.06);
+}
+
+.evil:hover {
+    box-shadow: 0 0 10px #b15cff;
+    border-color: #b15cff;
+    transform: scale(1.06);
+}
 
 .version {
     position: fixed;
     bottom: 8px;
     left: 8px;
+
     font-size: 12px;
-    color: rgba(255,255,255,0.35);
     font-family: monospace;
+
+    color: rgba(255,255,255,0.35);
+
     pointer-events: none;
 }
-
 </style>
 </head>
 
@@ -149,35 +171,54 @@
 <div class="line"></div>
 
 <div class="container">
-    <div class="card" onclick="openMenu('integrals')">
+
+    <div class="card" onclick="openMenu(this, 'integrals')">
         integrals
     </div>
 
-    <div class="card" onclick="openMenu('derivatives')">
+    <div class="card" onclick="openMenu(this, 'derivatives')">
         derivatives
     </div>
+
 </div>
 
 <div class="menu" id="menu">
-    <h2 id="menuTitle"></h2>
+
+    <h2 id="menuTitle">
+        select a category
+    </h2>
 
     <div class="difficulty">
+
         <div class="diff baby">baby</div>
         <div class="diff easy">easy</div>
         <div class="diff medium">medium</div>
         <div class="diff hard">hard</div>
         <div class="diff evil">evil</div>
+
     </div>
+
 </div>
 
+<div class="version">beta 1.0</div>
+
 <script>
-function openMenu(type) {
-    document.getElementById("menu").style.display = "block";
-    document.getElementById("menuTitle").innerText = type + " - select difficulty";
+function openMenu(card, type) {
+
+    document.querySelectorAll(".card").forEach(c => {
+        c.classList.remove("active");
+    });
+
+    card.classList.add("active");
+
+    document.getElementById("menuTitle").innerText =
+        type + " - select difficulty";
+
+    document.getElementById("menu")
+        .classList.add("visible");
 }
 </script>
 
-<div class="version">version-beta-1.0</div>
-
 </body>
 </html>
+```
