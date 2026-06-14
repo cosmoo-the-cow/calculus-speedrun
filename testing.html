@@ -16,7 +16,7 @@ body {
         linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
     background-size: 25px 25px;
-    overflow-x: hidden;
+    overflow-x: hidden; /* prevents scrollbars during transition */
 }
 
 .header {
@@ -164,6 +164,11 @@ body {
     z-index: 10;
 }
 
+/* ==========================================================================
+   NEW TRANSITION STYLES
+   ========================================================================== */
+
+/* The background container holding your lol.jpeg */
 .reveal-bg {
     position: fixed;
     top: 0;
@@ -173,9 +178,12 @@ body {
     background-image: url('lol.jpeg');
     background-size: cover;
     background-position: center;
-    z-index: -2;
+    z-index: -2; /* Sits perfectly behind everything */
 }
 
+/* The cloned overlays that will slice the screen in half.
+   They copy the original black background texture to mask the image until split.
+*/
 .split-overlay {
     position: fixed;
     top: 0;
@@ -188,18 +196,21 @@ body {
         linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
     background-size: 25px 25px;
     z-index: -1; 
-    pointer-events: none;
-    transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none; /* Allows interacting with your UI */
+    transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1); /* A cinematic, slow ease */
 }
 
+/* Top-Left Half Triangle */
 .split-overlay.top-left {
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
+/* Bottom-Right Half Triangle */
 .split-overlay.bottom-right {
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
+/* When the split triggers, shift the triangles away along their diagonal axis */
 .split-active .split-overlay.top-left {
     transform: translate(-100%, -100%);
 }
@@ -208,6 +219,7 @@ body {
     transform: translate(100%, 100%);
 }
 
+/* Slowly fade out the main text content elements so the image becomes the hero */
 .main-content {
     transition: opacity 1s ease;
     opacity: 1;
@@ -270,6 +282,7 @@ function openMenu(card, type) {
 }
 
 function triggerSplit() {
+    // Adds the class to the body to trigger the CSS diagonal translation animations
     document.body.classList.add("split-active");
 }
 </script>
