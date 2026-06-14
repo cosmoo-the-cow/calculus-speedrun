@@ -174,8 +174,15 @@ body {
     background-size: cover;
     background-position: center;
     z-index: -2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease;
 }
 
+.split-active .reveal-bg {
+    opacity: 1;
+    visibility: visible;
+}
 .split-overlay {
     position: fixed;
     top: 0;
